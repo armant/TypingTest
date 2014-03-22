@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>Typing Speed Test</title>
         <link href = "css/styles.css" rel = "stylesheet">
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
@@ -12,9 +13,21 @@
         
         <script>
             $.get('text.txt', function(data) {
-                var testText = data;
-                console.log(testText);
+                var wholeText = data;
+                var startPosition = 1 + Math.floor(Math.random() * 374633);
+                var testText = '';
+                
+                    for ( var i = startPosition; i < startPosition + 500; i++ ) {
+                        testText += wholeText.charAt(i);
+                    }
+                    
+                $("p#testtext").html(testText);
+                    
             }, 'text');
+        
         </script>
+    
+        <p id="testtext"></p>
+    
     </body>
 </html>
